@@ -2,7 +2,6 @@ name: LEMP Server
 on:
   push:
     branches:
-   # - src
     - main
 jobs:
   build:
@@ -15,7 +14,7 @@ jobs:
          curl -SL https://github.com/docker/compose/releases/download/v2.3.3/docker-compose-linux-x86_64 -o ~/.docker/cli-plugins/docker-compose
          chmod +x ~/.docker/cli-plugins/docker-compose
          docker compose version
-
+        
       - name: Build the Docker images
         run: docker compose build
         
@@ -26,4 +25,4 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
         
       - name: Push the Docker Images to the Docker Hub
-        run: docker-compose push
+        run: docker compose push
